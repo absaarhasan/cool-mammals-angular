@@ -1,0 +1,131 @@
+/* mixins */
+
+.drop-shadow (@x: 4px, @y: 2px, @blur: 4px, @spread: 4px, @alpha: 0.15) {
+  -webkit-box-shadow:	@x @y @blur @spread rgba(0, 0, 0, @alpha);
+  -moz-box-shadow:	@x @y @blur @spread rgba(0, 0, 0, @alpha);
+  box-shadow:		@x @y @blur @spread rgba(0, 0, 0, @alpha);
+}
+
+.transition (@transition) {
+  -webkit-transition: @transition;
+  -moz-transition:    @transition;
+  -ms-transition:     @transition;
+  -o-transition:      @transition;
+}
+
+
+/* Nav Bar */
+
+.navbar-cm {
+
+  background-color:#fff;
+  .drop-shadow;
+  border:0;
+
+  .navbar-toggle {
+
+    border-color: #ddd;
+
+    .icon-bar {
+
+          background-color: #888;
+
+        }
+      }
+
+  .navbar-brand {
+
+    font-size:24px;
+
+  }
+
+  .navbar-nav a {
+
+    font-size:16px;
+  }
+
+  .navbar-collapse.collapse {
+    display: block ;
+    overflow: hidden ;
+    max-height: 0px;
+    .transition(max-height .3s ease);
+
+    &.in {
+      max-height: 100px;
+    }
+  }
+
+}
+
+/* Jumbotron */
+
+
+.jumbotron {
+
+  background-image: url("../images/dolphin.jpg");
+  background-repeat: no-repeat;
+  background-size:cover;
+  margin-bottom:0;
+
+  h1 {
+
+    color:#fff;
+    text-align: center;
+    margin: 100px 0 100px 0;
+  }
+}
+
+/* template */
+
+
+
+.section {
+
+  border-bottom: 1px solid #337ab7;
+
+  h2 {
+    font-size:24px;
+    color:#337ab7;
+    font-weight:normal;
+    margin-bottom:20px;
+  }
+
+}
+
+.controls {
+
+  border:0;
+
+  .glyphicon {
+
+    color:#337ab7;
+  }
+}
+
+.content {
+
+  padding-bottom:10px;
+
+  &.contentPad {
+
+    padding-top:20px;
+  }
+}
+
+footer {
+
+  p {
+
+    margin:20px 0;
+    color:#337ab7;
+  }
+}
+
+
+/* add page */
+
+.form-group.has-error p {
+
+  margin-top:5px;
+  color: #a94442;
+}
