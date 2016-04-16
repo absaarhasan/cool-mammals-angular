@@ -3,7 +3,7 @@
 
 (function() {
 
-angular.module('cm.home', [])
+angular.module('cm.home', ['ellipsisFilter'])
     .controller('HomeCtrl',  HomeCtrl)
     .config(['$stateProvider', function($stateProvider) {
 
@@ -11,9 +11,11 @@ angular.module('cm.home', [])
 
             .state('home', {
                 url: '/',
+                parent: 'main',
                 templateUrl: "views/home/template.html",
                 controller: 'HomeCtrl',
                 controllerAs: 'vm'
+
             })
 
     }]);
@@ -21,27 +23,12 @@ angular.module('cm.home', [])
 
 })();
 
-HomeCtrl.$inject = [ /*'$rootScope', 'mainService'*/];
+HomeCtrl.$inject = ['$scope'];
 
-function HomeCtrl(/* $rootScope, mainService*/) {
+function HomeCtrl($scope) {
 
-    /* jshint validthis: true */
-    /*
     var vm = this;
 
-    vm.menuDisplay = mainService.menuDisplay;
-    //       vm.activeScreens = [];
-    vm.maxChapters = 22;
-    vm.displayMenu = mainService.displayMenu;
-    vm.adjustFont = mainService.adjustFont;
-    vm.fullBook = mainService.fullBook;
+    vm.mammals = $scope.$parent.vm.mammals;
 
-    $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParams) {
-
-        $rootScope.previousState = from.name;
-        $rootScope.previousParams = fromParams;
-
-    });
-
-    */
 }

@@ -1,3 +1,4 @@
+
 <div class="section container">
     <h2>Fav Mammals</h2>
 </div>
@@ -5,37 +6,17 @@
 <div class="section content container">
 
     <div class="row">
-        <div class="col-sm-6 col-md-4">
+        <div class="col-sm-6 col-md-4" ng-repeat="mammal in vm.mammals">
 
             <h2>
-                <button type="button" class="btn btn-default controls pull-right" aria-label="Left Align"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                <button type="button" class="btn btn-default controls pull-right" aria-label="Left Align"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
-                <span>Heading</span>
+                <button type="button" class="btn btn-cm controls pull-right" aria-label="Left Align" ng-click="$parent.vm.mammals.splice($index,1)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                <button type="button" class="btn btn-cm controls pull-right" aria-label="Left Align" ui-sref="edit({id: {{mammal.id}}})"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
+                <span ng-bind="mammal.name"></span>
             </h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+            <p class="info" ng-bind="mammal.description | ellipsisFilter"></p>
+            <p><a class="btn btn-cm" ui-sref="details({id: {{mammal.id}}})" role="button">View details »</a></p>
         </div>
-        <div class="col-sm-6 col-md-4">
-            <h2>
-                <button type="button" class="btn btn-default controls pull-right" aria-label="Left Align"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                <button type="button" class="btn btn-default controls pull-right" aria-label="Left Align"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
-                <span>Heading</span>
-            </h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <h2>
-                <button type="button" class="btn btn-default controls pull-right" aria-label="Left Align"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                <button type="button" class="btn btn-default controls pull-right" aria-label="Left Align"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
-                <span>Heading</span>
-            </h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
-        </div>
+
     </div>
-
-
-
 
 </div>

@@ -11,7 +11,8 @@
             $stateProvider
 
                 .state('details', {
-                    url: '/details',
+                    url: '/details/:id',
+                    parent: 'main',
                     templateUrl: "views/details/template.html",
                     controller: 'DetailsCtrl',
                     controllerAs: 'vm'
@@ -22,27 +23,22 @@
 
 })();
 
-DetailsCtrl.$inject = [ /*'$rootScope', 'mainService'*/];
+DetailsCtrl.$inject = [ '$scope', '$filter', '$stateParams', '$state'];
 
-function DetailsCtrl(/* $rootScope, mainService*/) {
+function DetailsCtrl($scope, $filter, $stateParams , $state) {
 
-    /* jshint validthis: true */
-    /*
-     var vm = this;
+    var mammals = $scope.$parent.vm.mammals;
+    var mammal = $filter('filter')(mammals, {id: $stateParams.id})[0];
+    var index = mammals.indexOf(mammal);
 
-     vm.menuDisplay = mainService.menuDisplay;
-     //       vm.activeScreens = [];
-     vm.maxChapters = 22;
-     vm.displayMenu = mainService.displayMenu;
-     vm.adjustFont = mainService.adjustFont;
-     vm.fullBook = mainService.fullBook;
+    var vm = this;
 
-     $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParams) {
+    vm.mammal = mammal;
+    vm.delete = function (){
 
-     $rootScope.previousState = from.name;
-     $rootScope.previousParams = fromParams;
+        $scope.$parent.vm.mammals.splice(index,1)
+        $state.go('success', { event: 'delete'});
 
-     });
+    };
 
-     */
 }

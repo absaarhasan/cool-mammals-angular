@@ -1,4 +1,3 @@
-
 'use strict';
 
 (function() {
@@ -11,6 +10,7 @@
 
                 .state('add', {
                     url: '/add',
+                    parent: 'main',
                     templateUrl: "views/add/template.html",
                     controller: 'AddCtrl',
                     controllerAs: 'vm'
@@ -18,30 +18,25 @@
 
         }]);
 
-
 })();
 
-AddCtrl.$inject = [ /*'$rootScope', 'mainService'*/];
+AddCtrl.$inject = [ '$scope', '$state'];
 
-function AddCtrl(/* $rootScope, mainService*/) {
+function AddCtrl($scope, $state) {
 
-    /* jshint validthis: true */
-    /*
-     var vm = this;
+    var newID = $scope.$parent.vm.newId;
+    var mammal = {'id': newID};
 
-     vm.menuDisplay = mainService.menuDisplay;
-     //       vm.activeScreens = [];
-     vm.maxChapters = 22;
-     vm.displayMenu = mainService.displayMenu;
-     vm.adjustFont = mainService.adjustFont;
-     vm.fullBook = mainService.fullBook;
+    var vm = this;
 
-     $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParams) {
+    vm.mammal = mammal;
+    vm.addMammal = function (){
+        $scope.$parent.vm.newId = ++ newID;
+        $scope.$parent.vm.mammals.push(this.mammal);
+        $state.go('success', { event: 'add'});
 
-     $rootScope.previousState = from.name;
-     $rootScope.previousParams = fromParams;
+    };
 
-     });
-
-     */
 }
+
+
