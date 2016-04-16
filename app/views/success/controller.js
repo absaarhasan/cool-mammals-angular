@@ -1,3 +1,4 @@
+
 'use strict';
 
 (function() {
@@ -22,13 +23,15 @@
 
 })();
 
-SuccessCtrl.$inject = ['successService'];
+SuccessCtrl.$inject = [ 'successService', '$stateParams'];
 
-function SuccessCtrl(successService) {
+function SuccessCtrl(successService, $stateParams) {
 
     var vm = this;
+
     vm.msg = successService.msg;
 
+    successService.activate($stateParams);
 }
 
 

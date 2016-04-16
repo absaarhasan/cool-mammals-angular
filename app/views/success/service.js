@@ -1,28 +1,43 @@
 'use strict';
 
-successService.$inject = [ '$stateParams'];
+successService.$inject = [ ];
 
-function successService($stateParams) {
+function successService() {
 
     var service = {
-        msg: successMsg($stateParams)
+        msg: { response: '' },
+        activate: activate
     };
 
     return service;
-}
 
-function successMsg(stateParams) {
+    function activate($stateParams) {
 
-    if (stateParams.event === 'add') {
+        console.log($stateParams.event)
+        console.log('A')
 
-        return "Your new mammal has been added!"
+        if ($stateParams.event === 'add') {
 
-    } else if (stateParams.event === 'edit') {
+            service.msg.response = "Your new mammal has been added!"
+            console.log('B')
 
-        return "Your changes are now live!"
+        } else if ($stateParams.event === 'edit') {
 
-    } else if (stateParams.event === 'delete') {
+            service.msg.response = "Your changes are now live!"
+            console.log('C')
 
-        return "This mammal has now been deleted!"
+        } else if ($stateParams.event === 'delete') {
+
+            service.msg.response = "This mammal has now been deleted!"
+            console.log('D')
+
+        } else {
+
+            service.msg.response = "Oops, you appear to have landed here by mistake ..."
+            console.log('E')
+
+        }
     }
 }
+
+
