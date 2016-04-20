@@ -4,11 +4,13 @@ describe('cm.success module', function() {
 
     var SuccessCtrl;
 
-    beforeEach(module('cm'));
+
+    beforeEach(module('cm.success'));
 
     beforeEach(inject(function ($controller, $state) {
 
         SuccessCtrl = $controller('SuccessCtrl');
+
 
     }));
 

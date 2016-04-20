@@ -2,21 +2,42 @@
 
 describe('cm.home module', function() {
 
-    var HomeCtrl;
+    var parentScope, scope, parentCtrl, homeCtrl;
 
-    beforeEach(module('cm'));
+    beforeEach(function () {
 
-    beforeEach(inject(function ($controller, $state) {
+        module('cm');
 
-        HomeCtrl = $controller('HomeCtrl');
+        module(function ($provide) {
+            $provide.value('mammals', {});
+        });
 
-    }));
+        inject(function ($controller, $rootScope) {
+
+            parentScope = $rootScope.$new();
+
+            parentCtrl = $controller('MainCtrl', {
+                $scope: parentScope
+            });
+
+            parentScope.vm = parentCtrl;
+
+            scope = parentScope.$new();
+
+            homeCtrl = $controller('HomeCtrl', {
+                $scope: scope
+            });
+
+            scope.vm = homeCtrl;
+
+        });
+    });
 
     describe('home controller', function(){
 
         it('should be defined', inject(function() {
 
-            expect(HomeCtrl).toBeDefined();
+            expect(homeCtrl).toBeDefined();
 
         }));
     });
