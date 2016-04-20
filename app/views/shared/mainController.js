@@ -1,4 +1,3 @@
-
 'use strict';
 
 (function() {
@@ -18,14 +17,8 @@
                     templateUrl: "views/shared/main.html",
                     controllerAs: 'vm',
                     resolve: {
-                        mammals: ['$http', function($http){
-                            return $http.get('/app/assets/json/mammals.json').then(function(response){
-
-                                return response.data.mammals;
-
-                            })
-                        }]
-                    }
+                            mammals: mainService
+                        }
                 })
 
         }]);
@@ -43,3 +36,4 @@ function MainCtrl(mammals) {
     vm.newId = mammals.length + 1;
 
 }
+

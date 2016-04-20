@@ -2,17 +2,24 @@
 
 describe('cm.success module', function() {
 
-    var SuccessCtrl;
+    var scope, SuccessCtrl;
 
+    beforeEach(function () {
 
-    beforeEach(module('cm.success'));
+        module('cm');
 
-    beforeEach(inject(function ($controller, $state) {
+        inject(function ($controller, $rootScope , successService, $stateParams) {
 
-        SuccessCtrl = $controller('SuccessCtrl');
+            scope = $rootScope.$new();
 
+            SuccessCtrl = $controller('SuccessCtrl', {
+                $scope: scope
+            });
 
-    }));
+            scope.vm = SuccessCtrl;
+
+        });
+    });
 
     describe('success controller', function(){
 
@@ -22,5 +29,6 @@ describe('cm.success module', function() {
 
         }));
     });
-
 });
+
+

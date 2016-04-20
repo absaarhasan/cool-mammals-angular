@@ -12,6 +12,11 @@ describe('cm.home module', function() {
             $provide.value('mammals', {});
         });
 
+
+        module(function ($provide) {
+            $provide.value('mammals', {});
+        });
+
         inject(function ($controller, $rootScope) {
 
             parentScope = $rootScope.$new();

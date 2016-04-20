@@ -7,7 +7,6 @@
         .controller('DetailsCtrl',  DetailsCtrl)
         .config(['$stateProvider', function($stateProvider) {
 
-
             $stateProvider
 
                 .state('details', {

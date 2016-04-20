@@ -2,15 +2,36 @@
 
 describe('cm.edit module', function() {
 
-    var EditCtrl;
+    var parentScope, scope, parentCtrl, EditCtrl;
 
-    beforeEach(module('cm'));
+    beforeEach(function () {
 
-    beforeEach(inject(function ($controller, $state) {
+        module('cm');
 
-        EditCtrl = $controller('EditCtrl');
+        module(function ($provide) {
+            $provide.value('mammals', []);
+        });
 
-    }));
+        inject(function ($controller, $rootScope) {
+
+            parentScope = $rootScope.$new();
+
+            parentCtrl = $controller('MainCtrl', {
+                $scope: parentScope
+            });
+
+            parentScope.vm = parentCtrl;
+
+            scope = parentScope.$new();
+
+            EditCtrl = $controller('EditCtrl', {
+                $scope: scope
+            });
+
+            scope.vm = EditCtrl;
+
+        });
+    });
 
     describe('edit controller', function(){
 
@@ -20,5 +41,5 @@ describe('cm.edit module', function() {
 
         }));
     });
-
 });
+

@@ -2,15 +2,36 @@
 
 describe('cm.add module', function() {
 
-    var AddCtrl;
+    var parentScope, scope, parentCtrl, AddCtrl;
 
-    beforeEach(module('cm'));
+    beforeEach(function () {
 
-    beforeEach(inject(function ($controller, $state) {
+        module('cm');
 
-        AddCtrl = $controller('AddCtrl');
+        module(function ($provide) {
+            $provide.value('mammals', {});
+        });
 
-    }));
+        inject(function ($controller, $rootScope) {
+
+            parentScope = $rootScope.$new();
+
+            parentCtrl = $controller('MainCtrl', {
+                $scope: parentScope
+            });
+
+            parentScope.vm = parentCtrl;
+
+            scope = parentScope.$new();
+
+            AddCtrl = $controller('AddCtrl', {
+                $scope: scope
+            });
+
+            scope.vm = AddCtrl;
+
+        });
+    });
 
     describe('add controller', function(){
 
@@ -20,5 +41,5 @@ describe('cm.add module', function() {
 
         }));
     });
-
 });
+

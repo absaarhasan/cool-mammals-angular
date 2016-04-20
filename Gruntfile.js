@@ -11,6 +11,7 @@ module.exports = function(grunt) {
                 files: {
                     'tmp/min-safe/directives.js': ['app/views/shared/directives.js'],
                     'tmp/min-safe/filters.js': ['app/views/shared/filters.js'],
+                    'tmp/min-safe/mainService.js': ['app/views/shared/mainService.js'],
                     'tmp/min-safe/mainController.js': ['app/views/shared/mainController.js'],
                     'tmp/min-safe/homeController.js': ['app/views/home/controller.js'],
                     'tmp/min-safe/detailsController.js': ['app/views/details/controller.js'],

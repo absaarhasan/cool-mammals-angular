@@ -2,15 +2,36 @@
 
 describe('cm.details module', function() {
 
-    var DetailsCtrl;
+    var parentScope, scope, parentCtrl, DetailsCtrl;
 
-    beforeEach(module('cm'));
+    beforeEach(function () {
 
-    beforeEach(inject(function ($controller, $state) {
+        module('cm');
 
-        DetailsCtrl = $controller('DetailsCtrl');
+        module(function ($provide) {
+            $provide.value('mammals', []);
+        });
 
-    }));
+        inject(function ($controller, $rootScope , $filter , $stateParams , $state) {
+
+            parentScope = $rootScope.$new();
+
+            parentCtrl = $controller('MainCtrl', {
+                $scope: parentScope
+            });
+
+            parentScope.vm = parentCtrl;
+
+            scope = parentScope.$new();
+
+            DetailsCtrl = $controller('DetailsCtrl', {
+                $scope: scope
+            });
+
+            scope.vm = DetailsCtrl;
+
+        });
+    });
 
     describe('details controller', function(){
 
@@ -20,5 +41,6 @@ describe('cm.details module', function() {
 
         }));
     });
-
 });
+
+
