@@ -35,5 +35,6 @@ function MainCtrl(mammals) {
     vm.mammals = mammals;
     vm.newId = mammals.length + 1;
 
+
 }
 

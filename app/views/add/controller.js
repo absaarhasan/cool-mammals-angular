@@ -24,14 +24,15 @@ AddCtrl.$inject = [ '$scope', '$state'];
 
 function AddCtrl($scope, $state) {
 
-    var newID = $scope.$parent.vm.newId;
-    var mammal = {'id': newID};
+    var newId = $scope.$parent.vm.newId;
+    var mammal = {'id': newId};
 
     var vm = this;
 
     vm.mammal = mammal;
     vm.addMammal = function (){
-        $scope.$parent.vm.newId = ++ newID;
+
+        $scope.$parent.vm.newId = ++ newId;
         $scope.$parent.vm.mammals.push(this.mammal);
         $state.go('success', { event: 'add'});
 
