@@ -9,13 +9,11 @@ describe('cm.home module', function() {
         module('cm');
 
         module(function ($provide) {
-            $provide.value('mammals', {});
+            $provide.value('mammals', []);
         });
 
 
-        module(function ($provide) {
-            $provide.value('mammals', {});
-        });
+
 
         inject(function ($controller, $rootScope) {
 
@@ -45,5 +43,11 @@ describe('cm.home module', function() {
             expect(homeCtrl).toBeDefined();
 
         }));
+
+        it('should receive mammal data', function() {
+
+            expect(scope.vm.mammals).toBeDefined();
+
+        });
     });
 });

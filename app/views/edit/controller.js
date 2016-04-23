@@ -31,6 +31,8 @@ function EditCtrl($scope, $state, $filter, $stateParams) {
     var mammal = $filter('filter')(mammals, {id: $stateParams.id})[0];
     var index = mammals.indexOf(mammal);
 
+        mammal = Object.create(mammal);
+
     var vm = this;
 
     vm.mammal = mammal;

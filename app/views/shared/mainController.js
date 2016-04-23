@@ -7,6 +7,7 @@
         .directive('mainJumbotron', mainJumbotron)
         .directive('mainFooter', mainFooter)
         .controller('MainCtrl',  MainCtrl)
+        .factory('mainService',  mainService)
         .config(['$stateProvider', function($stateProvider) {
 
             $stateProvider

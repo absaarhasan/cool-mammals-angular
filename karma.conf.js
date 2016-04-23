@@ -4,6 +4,7 @@ module.exports = function(config){
     basePath : '',
 
     files : [
+        'app/views/shared/*.html',
         'app/bower_components/angular/angular.js',
         'app/bower_components/angular-ui-router/release/angular-ui-router.min.js',
         'app/bower_components/angular-bootstrap/ui-bootstrap.min.js',
@@ -24,7 +25,10 @@ module.exports = function(config){
         'app/views/shared/mainService.js',
         'app/views/shared/mainController.js',
         'app/views/shared/mainSpec.js',
+        'app/views/shared/filtersSpec.js',
+        'app/views/shared/directivesSpec.js',
         'app/app.js'
+
     ],
 
     autoWatch : true,
@@ -43,7 +47,19 @@ module.exports = function(config){
     junitReporter : {
       outputFile: 'test_out/unit.xml',
       suite: 'unit'
-    }
+    },
+
+      preprocessors: {
+          'app/views/shared/*.html': ['ng-html2js']
+      },
+
+// we will be accessing this by module name later on in Jasmine
+      ngHtml2JsPreprocessor: {
+          moduleName: 'templates'
+      }
+
+
+
 
   });
 };

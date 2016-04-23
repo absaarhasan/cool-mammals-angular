@@ -32,7 +32,6 @@ describe('cm.add module', function() {
 
             spyOn($state, 'go');
 
-
         });
     });
 
@@ -64,8 +63,6 @@ describe('cm.add module', function() {
             expect($state.go).toHaveBeenCalledWith('success', { event: 'add'})
 
         }));
-
-
 
     });
 });

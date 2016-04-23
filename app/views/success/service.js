@@ -13,6 +13,7 @@ function successService() {
 
     function activate($stateParams) {
 
+
         if ($stateParams.event === 'add') {
 
             service.msg.response = "Your new mammal has been added!"
